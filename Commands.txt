@@ -1,0 +1,29 @@
+1) Installation of Node.js
+    everything empty (if no specification required) except the file name (which will be created) and purpose
+
+2) Create a file called app.js in the application folder
+
+3) Initialisation of Node Package Manager (npm) (in the current working directory!!)
+    npm init
+
+4) Installation of required packages using NPM
+    npm install --save express mysql body-parser ejs - node js express
+    npm install -g nodemon - optional, used to run app.js automatically while any file content changes - on each save
+
+5) Add the following lines of code to the app.js file (packages installed using NPM)
+    const path = require('path');
+    const express = require('express');
+    const ejs = require('ejs');
+    const bodyParser = require('body-parser');
+    const mysql = require('mysql');
+    const app = express();
+
+6) Add the following lines issuing out the coommand for listening on the server and specification on which port
+    // Server listening
+    app.listen(3000, () => {
+        console.log('Server is running at port 3000');
+    });
+
+7) Optional for nodemon : nodemon app (OR) npm start
+7.1) In this instance we ised nodemon app for running the application
+
