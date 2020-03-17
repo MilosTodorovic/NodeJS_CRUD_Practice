@@ -1,9 +1,23 @@
 <html>
-<!-- <head>
-    <h1> CRUD Operations using NodeJS, ExpressJS, MySQL </h1>
-</head> -->
+<head>
+    <!-- PROFESOROV CSS ZA TABELU-->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"> -->
+
+    <!-- Externa CSS stylesheet-->
+    <!-- <link href="../assets/style.css"/> -->
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Crud App!</title> -->
+
+    <!-- CUSTOM CSS ZA TABELU -->
+    
+
+</head>
 
 <body>
+    
 <div class = "container">
     <h2> <%= title %> </h2>
     <table class = "table table-dark table-striped">
@@ -15,9 +29,9 @@
                 <th> ZAP_PREZIME </th>
                 <th> ZAP_SREDNJE_SLOVO </th>
                 <th> ZAP_IME </th>
-                <th> ZAP_FOTOGRAFIJA </th>
+                <!-- <th> ZAP_FOTOGRAFIJA </th>
                 <th> ZAP_JMBG </th>
-                <th> RCP_REDNI_BROJ </th>
+                <th> RCP_REDNI_BROJ </th> -->
             </tr>
         </thead>
         <tbody> 
@@ -29,9 +43,9 @@
                     <td> <%= employees.ZAP_PREZIME %> </td>
                     <td> <%= employees.ZAP_SREDNJE_SLOVO %> </td>
                     <td> <%= employees.ZAP_IME %> </td>
-                    <td> <%= employees.ZAP_FOTOGRAFIJA %> </td>
+                    <!-- <td> <%= employees.ZAP_FOTOGRAFIJA %> </td>
                     <td> <%= employees.ZAP_JMBG %> </td>
-                    <td> <%= employees.RCP_REDNI_BROJ %> </td>
+                    <td> <%= employees.RCP_REDNI_BROJ %> </td> -->
                     <td> 
                         <button class = "btn btn-sm btn-primary"> Edit </button>
                         <button class = "btn btn-sm btn-danger"> Delete </button>
