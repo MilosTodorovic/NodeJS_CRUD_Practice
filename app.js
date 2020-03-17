@@ -29,8 +29,15 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 app.get('/', (req, res) => {
     //res.send('CRUD Operation using NodeJS / ExpressJS/ MySql');
-    res.render('user_index');
-})
+    let sql = "SELECT * FROM employees";
+    let query =  connection.query(sql, (err, rows) => {
+        if(err) throw err;
+        res.render('employees', {
+            title: 'CRUD Operations using NodeJS, ExpressJS, MySQL',
+            employees: rows
+        })
+    });
+});
 
 // Server listening
 app.listen(3000, () => {
