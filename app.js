@@ -39,6 +39,23 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/addEmployee', (req, res) => {
+    // res.send('new employee form page');
+    res.render('add_employee', {
+        title: 'Adding an employee'
+    });
+});
+
+app.post('/save', (req, res) => {
+    let data = {tip_ust: req.body.tip_ust, vu_identifikator: req.body.vu_identifikator, zap_redni_broj: req.body.employee_id_number, 
+                zap_ime: req.body.employee_name, zap_srednje_slovo: req.body.employee_initials, zap_prezime: req.body.employee_surname};
+    let sql = "INSERT INTO employees SET ?"
+    let query = connection.query(sql, data, (err, results) => {
+        if(err) throw err;
+        res.redirect('/');
+    })
+})
+
 // Server listening
 app.listen(3000, () => {
     console.log('Server is running at port 3000');
