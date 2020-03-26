@@ -12,12 +12,14 @@
     <title>Crud App!</title> -->
 
     <!-- CUSTOM CSS ZA TABELU -->
+    <meta charset="utf-8">
     <meta name = "viewport" content = "width-device-width, initial-scale = 1">
     <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/poper.min.js"></script>
     <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <%- include('header') %>
 </head>
 
 <body>
@@ -42,7 +44,7 @@
         <tbody> 
             <% employees.forEach(function(employees) { %>
                 <tr>
-                    <td> <%= employees.TIP_US %> </td>
+                    <td> <%= employees.TIP_UST %> </td>
                     <td> <%= employees.VU_IDENTIFIKATOR %> </td>
                     <td> <%= employees.ZAP_REDNI_BROJ %> </td>
                     <td> <%= employees.ZAP_PREZIME %> </td>
@@ -52,8 +54,8 @@
                     <td> <%= employees.ZAP_JMBG %> </td>
                     <td> <%= employees.RCP_REDNI_BROJ %> </td> -->
                     <td> 
-                        <button class = "btn btn-sm btn-primary"> Edit </button>
-                        <button class = "btn btn-sm btn-danger"> Delete </button>
+                        <a href = "edit/<%= employees.ZAP_REDNI_BROJ %>" class = "btn btn-sm btn-primary"> Edit </a>
+                        <a href = "delete/<%= employees.ZAP_REDNI_BROJ %>" class = "btn btn-sm btn-danger"> Delete </a>
                     </td> 
                 </tr>
             <% }); %>

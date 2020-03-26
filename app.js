@@ -27,15 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 
 
-app.get('/', (req, res) => {
-    //res.send('CRUD Operation using NodeJS / ExpressJS/ MySql');
+app.get('/employeesData', (req, res) => {
     let sql = "SELECT * FROM employees";
     let query =  connection.query(sql, (err, rows) => {
         if(err) throw err;
         res.render('employees', {
             title: 'CRUD Operations using NodeJS, ExpressJS, MySQL',
             employees: rows
-        })
+        });
     });
 });
 
@@ -52,13 +51,28 @@ app.post('/save', (req, res) => {
     let sql = "INSERT INTO employees SET ?"
     let query = connection.query(sql, data, (err, results) => {
         if(err) throw err;
-        res.redirect('/');
-    })
-})
+        res.redirect('/employeesData');
+    });
+});
+
+app.get('/edit/:zap_redni_broj', (req, res) => {
+    const zap_redni_broj = req.params.zap_redni_broj;
+    let sql = `SELECT * FROM employees WHERE zap_redni_broj = ${zap_redni_broj}`;
+    let query = connection.query(sql, (err, result) => {
+        if(err) throw err;
+        res.render('edit_employees', {
+            title : 'Edditing an employee',
+            employees : result[0]
+        });
+    });
+});
 
 // Server listening
 app.listen(3000, () => {
     console.log('Server is running at port 3000');
 });
+
+
+
 
 // Optional for nodemon : nodemon app (OR) npm start

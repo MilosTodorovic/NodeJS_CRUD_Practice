@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title> <%= title %> </title>
+        <title> <%= title %>  </title>
         <meta charset="utf-8">
         <meta name = "viewport" content = "width-device-width, initial-scale = 1">
         <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -13,30 +13,30 @@
     <div class = "container">
         <h2> <%= title %> </h2>
         <form action = "/save" method = "post">
+            <input type = "hidden" value = "<%= employees.zap_redni_broj %>" name = "zap_redni_broj"> 
             <div class = "form-group">
                 <label for = "tip_ust"> Type of institution: </label>
-                <input type = "text" class = "form-control" id = "tip_ust" placeholder = "Choose type of institution" name = "tip_ust">
-                
+                <input type = "text" class = "form-control" id = "tip_ust" placeholder = "Choose type of institution" value = "<%= employees.tip_ust %>"" name = "tip_ust" required>
             </div>
             <div class = "form-group">
                 <label for = "vu_identifikator"> Higher education institution ID: </label>
-                <input type = "text" class = "form-control" id = "vu_identifikator" placeholder = "Enter the identifier of the higher institution" name = "vu_identifikator">
+                <input type = "text" class = "form-control" id = "vu_identifikator" placeholder = "Enter the identifier of the higher institution" value = "<%= employees.vu_identifikator %>" name = "vu_identifikator" requried>
             </div>
             <div>
                 <label for = "employee_id_number"> Employee ID: </label>
-                <input type = "text" class = "form-control" id = "employee_id_number" placeholder = "Enter the identification number of the employee" name = "employee_id_number" required>
+                <input type = "text" class = "form-control" id = "employee_id_number" placeholder = "Enter the identification number of the employee" value = "<%= employees.employee_id_number %>" name = "employee_id_number" required>
             </div>
             <div class = form-group>
                 <label for = "employee_name"> Name: </label>
-                <input type = "text" class = "form-control" id = "employee_name" placeholder = "Enter the name of the employee" name = "employee_name" required>
+                <input type = "text" class = "form-control" id = "employee_name" placeholder = "Enter the name of the employee" value = "<%= employees.employee_name %>" name = "employee_name" required>
             </div>
             <div class = "form-group">
                 <label for = "employee_initials"> Initials: </label>
-                <input type = "text" class = "form-control" id = "employee_initials" placeholder= "Enter the initials of the employee" name = "employee_initials" required>
+                <input type = "text" class = "form-control" id = "employee_initials" placeholder= "Enter the initials of the employee" value = "<%= employees.employee_initials %>" name = "employee_initials" required>
             </div>
             <div class = "form-group">
                 <label for = "employee_surname"> Surname: </label>
-                <input type = "text" class = "form-control" id = "employee_surname" placeholder = "Enter the surname of the employee" name = "employee_surname" required>
+                <input type = "text" class = "form-control" id = "employee_surname" placeholder = "Enter the surname of the employee" value = "<%= employees.employee_surname %>" name = "employee_surname" required>
             </div>
             <button type = "submit" class = "btn btn-primary"> Submit </button> 
         </form>
