@@ -1,31 +1,10 @@
-<html>
-<head>
-    <!-- PROFESOROV CSS ZA TABELU-->
-    <!-- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"> -->
+<%- include('header') %>
 
-    <!-- Externa CSS stylesheet-->
-    <!-- <link href="../assets/style.css"/> -->
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Crud App!</title> -->
-
-    <!-- CUSTOM CSS ZA TABELU -->
-    <meta charset="utf-8">
-    <meta name = "viewport" content = "width-device-width, initial-scale = 1">
-    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/poper.min.js"></script>
-    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <%- include('header') %>
-</head>
-
-<body>
-    
-<div class = "container">
-    <h2> <%= title %> </h2>
+<% if (employees.length === 0) { %>
+    <div class="alert alert-info" role="alert">
+        <p>There are no employees to show, click <a href="/addEmployee">here</a> to add a new employee.</p>    
+    </div>
+<% } else { %>
     <a href = "/addEmployee" class = "btn btn-sm btn-primary"> Add Employee </a><br/><br/>
     <table class = "table table-dark table-striped">
         <thead>
@@ -61,6 +40,6 @@
             <% }); %>
         </tbody>
     </table>
-</div>
-</body>
-</html>
+<% } %>
+
+<%- include('footer') %>

@@ -12,6 +12,8 @@ const connection = mysql.createConnection({
     database: 'test'
 });
 
+
+
 connection.connect(function(error){
     if(!!error) console.log(error);
     else console.log('Database connected');
@@ -27,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 
 
-app.get('/employeesData', (req, res) => {
+app.get('/', (req, res) => {
     let sql = "SELECT * FROM employees";
     let query =  connection.query(sql, (err, rows) => {
         if(err) throw err;
@@ -51,7 +53,7 @@ app.post('/save', (req, res) => {
     let sql = "INSERT INTO employees SET ?"
     let query = connection.query(sql, data, (err, results) => {
         if(err) throw err;
-        res.redirect('/employeesData');
+        res.redirect('/');
     });
 });
 
