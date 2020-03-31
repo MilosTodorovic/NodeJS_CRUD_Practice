@@ -57,7 +57,7 @@ app.post('/save', (req, res) => {
     });
 });
 
-app.get('/edit/:zap_redni_broj', (req, res) => {
+app.get('/editEmployees/:zap_redni_broj', (req, res) => {
     const zap_redni_broj = req.params.zap_redni_broj;
     let sql = `SELECT * FROM employees WHERE zap_redni_broj = ${zap_redni_broj}`;
     let query = connection.query(sql, (err, result) => {
@@ -76,6 +76,16 @@ app.post('/updateEmployees', (req, res) => {
               "' , ZAP_IME = '" + req.body.zap_ime + "' WHERE ZAP_REDNI_BROJ =  " + zap_redni_broj; 
     let query = connection.query(sql, (err, results) => {
         if(err) throw err;
+        res.redirect('/');
+    });
+});
+
+
+app.get('/deleteEmployees/:zap_redni_broj', (req, res) => {
+    const zap_redni_broj = req.params.zap_redni_broj;
+    let sql = `DELETE FROM employees WHERE zap_redni_broj = ${zap_redni_broj}`;
+    let query = connection.query(sql, (err, result) => {
+        if(err) throw (err);
         res.redirect('/');
     });
 });
