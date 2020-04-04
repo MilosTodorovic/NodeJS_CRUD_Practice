@@ -1,17 +1,10 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name = "viewport" content = "width-device-width, initial-scale = 1">
-    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/poper.min.js"></script>
-    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
+<%- include('header') %>
 
-<body>
-    
-<div class = "container">
-    <h2> <%= title %> </h2>
+<% if (types_of_institutions.length === 0) { %>
+    <div class="alert alert-info" role="alert">
+        <p>There are no types of institutions to show, click <a href="/addTypeOfInstitution">here</a> to add a new type of institution.</p>    
+    </div>
+<% } else { %>
     <a href = "/addTypeOfInstitution" class = "btn btn-sm btn-primary"> Add Type of Institution </a><br/><br/>
     <table class = "table table-dark table-striped">
         <thead>
@@ -26,13 +19,13 @@
                     <td> <%= types_of_institutions.TIP_UST %> </td>
                     <td> <%= types_of_institutions.TIP_NAZIV</td>
                     <td> 
-                        <a href = "edit/<%= types_of_institutions.TIP_UST%>" class = "btn btn-sm btn-primary"> Edit </a>
-                        <a href = "delete/<%= types_of_institutions.TIP_UST%>" class = "btn btn-sm btn-danger"> Delete </a>
+                        <a href = "editTypeOfInstitution/<%= types_of_institutions.TIP_UST%>" class = "btn btn-sm btn-primary"> Edit </a>
+                        <a href = "deleteTypeOfInstitution/<%= types_of_institutions.TIP_UST%>" class = "btn btn-sm btn-danger"> Delete </a>
                     </td> 
                 </tr>
             <% }); %>
         </tbody>
     </table>
-</div>
-</body>
-</html>
+<% } %>
+
+<%- include('footer') %>

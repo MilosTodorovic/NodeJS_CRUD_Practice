@@ -40,9 +40,40 @@ app.get('/', (req, res) => {
     });
 });
 
+
 app.get('/addEmployee', (req, res) => {
-    // res.send('new employee form page');
-    res.render('add_employee', {
+
+    let allTypesOfInstitution = [];
+
+    getAllTypesOfInstitutions().then(data => {
+        allTypesOfInstitution = data;
+    })
+    
+    let query = 'SELECT * FROM TYPES_OF_INSTITUTIONS';
+    connection.query(query, (err, data) => {
+        // res.send('new employee form page');
+        res.render('add_employee', {
+            title: 'Adding an employee',
+            types_of_institutions : allTypesOfInstitution
+    });
+    })
+    
+});
+
+app.get('/typesOfInstitutions', (req, res) => {
+    var tip_ust = req.body.tip_ust;
+    let sql = "SELECT * FROM types_of_institutions";
+    let query = connection.query(sql, (err, rows) => {
+        if(err) throw (err);
+        res.render('types_of_institutions', {
+            title: 'Adding a type of institution',
+            types_of_institutions: rows
+        });
+    });
+});
+
+app.get('/addTypeOfInstitution', (req, res) => {
+    res.render('add_type_of_institution', {
         title: 'Adding an employee'
     });
 });
@@ -96,6 +127,20 @@ app.listen(3000, () => {
 });
 
 
+
+function getAllTypesOfInstitutions() {
+    return new Promise((resolve, reject) => {
+        let query = "SELECT * FROM TYPES_OF_INSTITUTIONS;"
+        connection.query(query, (err, data) => {
+            if (!err) {
+                resolve(data);
+            }
+            else {
+                reject(err);
+            }
+        });
+    });
+};
 
 
 // Optional for nodemon : nodemon app (OR) npm start

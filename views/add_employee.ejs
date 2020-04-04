@@ -1,22 +1,16 @@
-<html>
-    <head>
-        <title> <%= title %> </title>
-        <meta charset="utf-8">
-        <meta name = "viewport" content = "width-device-width, initial-scale = 1">
-        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/poper.min.js"></script>
-        <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<%- include('header') %>
 
-    </head>
-    <body>
-    <div class = "container">
-        <h2> <%= title %> </h2>
+
         <form action = "/save" method = "post">
             <div class = "form-group">
                 <label for = "tip_ust"> Type of institution: </label>
-                <input type = "text" class = "form-control" id = "tip_ust" placeholder = "Choose type of institution" name = "tip_ust">
-                
+                <!-- <input type = "text" class = "form-control" id = "tip_ust" placeholder = "Choose type of institution" name = "tip_ust"> -->
+                <select class = "custom-select" id = "tip_ust" name = "tip_ust" required>
+                    <option selected disabled value=""> Select the type of institution</option>
+                    <% types_of_institutions.forEach(function(types_of_institutions, index) { %>
+                    <option value = "<%= types_of_institutions.TIP_UST %>"><%= types_of_institutions.TIP_UST %></option>
+                    <% }); %>
+                </select>
             </div>
             <div class = "form-group">
                 <label for = "vu_identifikator"> Higher education institution ID: </label>
@@ -40,8 +34,5 @@
             </div>
             <button type = "submit" class = "btn btn-primary"> Submit </button> 
         </form>
-    </div>        
 
-    </body>
-
-</html>
+<%- include('footer') %>
