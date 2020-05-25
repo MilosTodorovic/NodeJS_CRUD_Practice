@@ -6,7 +6,7 @@
                 <label for = "tip_ust"> Type of institution: </label>
                 <!-- <input type = "text" class = "form-control" id = "tip_ust" placeholder = "Choose type of institution" name = "tip_ust"> -->
                 <select class = "custom-select" id = "tip_ust" name = "tip_ust" required>
-                    <option selected disabled value=""> Select the type of institution</option>
+                    <option selected disabled value=""> Select the type of institution..</option>
                     <% types_of_institutions.forEach(function(types_of_institutions, index) { %>
                     <option value = "<%= types_of_institutions.TIP_UST %>"><%= types_of_institutions.TIP_UST %></option>
                     <% }); %>
@@ -14,7 +14,13 @@
             </div>
             <div class = "form-group">
                 <label for = "vu_identifikator"> Higher education institution ID: </label>
-                <input type = "text" class = "form-control" id = "vu_identifikator" placeholder = "Enter the identifier of the higher institution" name = "vu_identifikator">
+                <!-- <input type = "text" class = "form-control" id = "vu_identifikator" placeholder = "Enter the identifier of the higher institution" name = "vu_identifikator"> -->
+                <select class = "custom-select" id = "vu_identifikator" name = "vu_identifikator  required">
+                    <option selected disabled value = ""> Select the identifier of the institution..</option>
+                    <% high_education_institutions.forEach(function(high_education_institution, index) { %>
+                        <option value = "<%= high_education_institution.VU_IDENTIFIKATOR %>"><%= high_education_institution.VU_IDENTIFIKATOR %></option>
+                    <% }); %>
+                </select>
             </div>
             <div>
                 <label for = "employee_id_number"> Employee ID: </label>

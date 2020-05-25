@@ -44,20 +44,28 @@ app.get('/', (req, res) => {
 app.get('/addEmployee', (req, res) => {
 
     let allTypesOfInstitution = [];
+    let allHEI = [];
 
-    getAllTypesOfInstitutions().then(data => {
-        allTypesOfInstitution = data;
-    })
-    
-    let query = 'SELECT * FROM TYPES_OF_INSTITUTIONS';
-    connection.query(query, (err, data) => {
-        // res.send('new employee form page');
-        res.render('add_employee', {
-            title: 'Adding an employee',
-            types_of_institutions : allTypesOfInstitution
+    getAllTypesOfInstitutions().then(data1 => {
+        allTypesOfInstitution = data1;
     });
-    })
+
+    getAllHighEducationInstitutions().then(data2 => {
+        allHEI = data2;
+    });
     
+    let query1 = 'SELECT * FROM TYPES_OF_INSTITUTIONS';
+    let query2 = 'SELECT * FROM HIGH_EDUCATION_INSTITUTION;'
+    connection.query((query1, (err, data1) => {
+        connection.query((query2, (err, data2) => {
+            // res.send('new employee form page');
+            res.render('add_employee', {
+                title: 'Adding an employee',
+                types_of_institutions : allTypesOfInstitution,
+                high_education_institutions : allHEI
+                });
+        }));
+    }));
 });
 
 app.get('/typesOfInstitutions', (req, res) => {
@@ -131,9 +139,9 @@ app.listen(3000, () => {
 function getAllTypesOfInstitutions() {
     return new Promise((resolve, reject) => {
         let query = "SELECT * FROM TYPES_OF_INSTITUTIONS;"
-        connection.query(query, (err, data) => {
+        connection.query(query, (err, data1) => {
             if (!err) {
-                resolve(data);
+                resolve(data1);
             }
             else {
                 reject(err);
@@ -141,6 +149,20 @@ function getAllTypesOfInstitutions() {
         });
     });
 };
+
+function getAllHighEducationInstitutions() {
+    return new Promise((resolve, reject) => {
+        let query = "SELECT * FROM HIGH_EDUCATION_INSTITUTION;"
+        connection.query(query, (err, data2) => {
+            if (!err) {
+                resolve(data2);
+            }
+            else {
+                reject(err);
+            }
+        })
+    })
+}
 
 
 // Optional for nodemon : nodemon app (OR) npm start

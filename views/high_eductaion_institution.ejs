@@ -1,0 +1,20 @@
+<%- include('header') %>
+
+<% if (high_education_institution.length === 0) { %>
+    <div class="alert alert-info" role="alert">
+        <p>There are no High education institutions to show, click <a href="/addEmployee">here</a> to add a new High education institution.</p>    
+    </div>
+<% } else { %>
+    <a href = "/addEducationInstitutio" class = "btn btn-sm btn-primary"> Add High education institution</a></br/><br/>
+    <table class = "table table-dark table-striped">
+        <thead>
+            <tr>
+                <th> TIP_UST </th>
+                <th> VU_IDENTIFIKATOR </th>
+            </tr>
+        </thead>
+    </table>
+
+<% } %>
+
+<%- include('footer') %>
